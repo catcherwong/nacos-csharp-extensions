@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{627AE167-3146-4119-8E23-CED0D8AA057D}"
 EndProject
@@ -17,11 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientAppSample", "samples\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiClient.Extensions.Nacos.Tests", "tests\WebApiClient.Extensions.Nacos.Tests\WebApiClient.Extensions.Nacos.Tests.csproj", "{A06F18A9-BD1D-4F8B-BC10-7FE40999312B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NacosExtensions.Common", "src\NacosExtensions.Common\NacosExtensions.Common.csproj", "{30EEF74D-7553-4A08-99D2-31D7B1ED7E06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NacosExtensions.Common", "src\NacosExtensions.Common\NacosExtensions.Common.csproj", "{30EEF74D-7553-4A08-99D2-31D7B1ED7E06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NacosExtensions.Common.Tests", "tests\NacosExtensions.Common.Tests\NacosExtensions.Common.Tests.csproj", "{0118FE7E-E711-4787-A3AF-024E83E3176E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NacosExtensions.Common.Tests", "tests\NacosExtensions.Common.Tests\NacosExtensions.Common.Tests.csproj", "{0118FE7E-E711-4787-A3AF-024E83E3176E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiClientCore.Extensions.Nacos", "src\WebApiClientCore.Extensions.Nacos\WebApiClientCore.Extensions.Nacos.csproj", "{9CBC2CDF-E96E-48B9-80B1-09AA165039D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiClientCore.Extensions.Nacos", "src\WebApiClientCore.Extensions.Nacos\WebApiClientCore.Extensions.Nacos.csproj", "{9CBC2CDF-E96E-48B9-80B1-09AA165039D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiClientCore.Extensions.Nacos.Tests", "tests\WebApiClientCore.Extensions.Nacos.Tests\WebApiClientCore.Extensions.Nacos.Tests.csproj", "{6E47B9A7-235F-4EF6-86C3-FABA6007E3BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{9CBC2CDF-E96E-48B9-80B1-09AA165039D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CBC2CDF-E96E-48B9-80B1-09AA165039D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CBC2CDF-E96E-48B9-80B1-09AA165039D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E47B9A7-235F-4EF6-86C3-FABA6007E3BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E47B9A7-235F-4EF6-86C3-FABA6007E3BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E47B9A7-235F-4EF6-86C3-FABA6007E3BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E47B9A7-235F-4EF6-86C3-FABA6007E3BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{30EEF74D-7553-4A08-99D2-31D7B1ED7E06} = {627AE167-3146-4119-8E23-CED0D8AA057D}
 		{0118FE7E-E711-4787-A3AF-024E83E3176E} = {D95D5845-1836-47C6-A5D9-1AF77C420100}
 		{9CBC2CDF-E96E-48B9-80B1-09AA165039D7} = {627AE167-3146-4119-8E23-CED0D8AA057D}
+		{6E47B9A7-235F-4EF6-86C3-FABA6007E3BE} = {D95D5845-1836-47C6-A5D9-1AF77C420100}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9778CC80-FEEB-416E-854F-E0D2A30E57AD}

@@ -34,7 +34,7 @@
                 throw new ArgumentNullException(nameof(configOptions));
             }
 
-            return services.AddHttpApi<TInterface>()
+            return services.AddHttpApi<TInterface>(configOptions)
                     .ConfigurePrimaryHttpMessageHandler(provider =>
                     {
                         var svc = provider.GetRequiredService<INacosNamingService>();
@@ -46,6 +46,28 @@
                                 "Can not find out INacosNamingService, please register at first");
                         }
 
+                        return new NacosExtensions.Common.NacosDiscoveryHttpClientHandler(svc, group, cluster, loggerFactory);
+                    });
+        }
+
+        // fot test
+        internal static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(
+            this IServiceCollection services,
+            Action<HttpApiOptions, IServiceProvider> configOptions,
+            INacosNamingService svc,
+            ILoggerFactory loggerFactory,
+            string group = "DEFAULT_GROUP",
+            string cluster = "DEFAULT")
+            where TInterface : class, IHttpApi
+        {
+            if (configOptions == null)
+            {
+                throw new ArgumentNullException(nameof(configOptions));
+            }
+
+            return services.AddHttpApi<TInterface>(configOptions)
+                    .ConfigurePrimaryHttpMessageHandler(provider =>
+                    {
                         return new NacosExtensions.Common.NacosDiscoveryHttpClientHandler(svc, group, cluster, loggerFactory);
                     });
         }

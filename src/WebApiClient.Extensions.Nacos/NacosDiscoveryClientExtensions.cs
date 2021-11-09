@@ -50,5 +50,28 @@
                         return new NacosExtensions.Common.NacosDiscoveryHttpClientHandler(svc, group, cluster, loggerFactory);
                     });
         }
+
+        // fot test
+        internal static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(
+            this IServiceCollection services,
+            Action<HttpApiConfig, IServiceProvider> configOptions,
+            INacosNamingService svc,
+            ILoggerFactory loggerFactory,
+            string group = "DEFAULT_GROUP",
+            string cluster = "DEFAULT")
+            where TInterface : class, IHttpApi
+        {
+            if (configOptions == null)
+            {
+                throw new ArgumentNullException(nameof(configOptions));
+            }
+
+            return services
+                    .AddHttpApiTypedClient<TInterface>(configOptions)
+                    .ConfigurePrimaryHttpMessageHandler(provider =>
+                    {
+                        return new NacosExtensions.Common.NacosDiscoveryHttpClientHandler(svc, group, cluster, loggerFactory);
+                    });
+        }
     }
 }

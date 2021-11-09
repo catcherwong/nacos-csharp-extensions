@@ -1,7 +1,16 @@
 ﻿<Project>
   <Import Project="build\dependencies.props" />
+  <Import Project="build\version.props" />
 
   <PropertyGroup>
+    <Authors>Catcher Wong</Authors>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/catcherwong/nacos-csharp-extensions</PackageProjectUrl>
+    <Deterministic>false</Deterministic>
+
+    <VersionPrefix>$(NugetVersion)</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
+
     <LangVersion>latest</LangVersion>
     <RepositoryType>git</RepositoryType>
 
