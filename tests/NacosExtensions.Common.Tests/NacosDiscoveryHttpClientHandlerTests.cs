@@ -1,6 +1,7 @@
 namespace WebApiClient.Extensions.Nacos.Tests
 {
     using Moq;
+    using NacosExtensions.Common;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Xunit;

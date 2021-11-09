@@ -1,20 +1,20 @@
-﻿namespace WebApiClient.Extensions.Nacos
+﻿namespace WebApiClientCore.Extensions.Nacos
 {
     using global::Nacos.V2;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
     using System;
-    using WebApiClient.Extensions.HttpClientFactory;
+    using WebApiClientCore;
 
     public static class NacosDiscoveryClientExtensions
     {
         public static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(this IServiceCollection services, string group = "DEFAULT_GROUP", string cluster = "DEFAULT")
-            where TInterface : class, IHttpApi
+           where TInterface : class, IHttpApi
         {
             return services.AddNacosDiscoveryTypedClient<TInterface>(c => { }, group, cluster);
         }
 
-        public static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(this IServiceCollection services, Action<HttpApiConfig> configOptions, string group = "DEFAULT_GROUP", string cluster = "DEFAULT")
+        public static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(this IServiceCollection services, Action<HttpApiOptions> configOptions, string group = "DEFAULT_GROUP", string cluster = "DEFAULT")
             where TInterface : class, IHttpApi
         {
             if (configOptions == null)
@@ -26,7 +26,7 @@
         }
 
 
-        public static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(this IServiceCollection services, Action<HttpApiConfig, IServiceProvider> configOptions, string group = "DEFAULT_GROUP", string cluster = "DEFAULT")
+        public static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(this IServiceCollection services, Action<HttpApiOptions, IServiceProvider> configOptions, string group = "DEFAULT_GROUP", string cluster = "DEFAULT")
             where TInterface : class, IHttpApi
         {
             if (configOptions == null)
@@ -34,8 +34,7 @@
                 throw new ArgumentNullException(nameof(configOptions));
             }
 
-            return services
-                    .AddHttpApiTypedClient<TInterface>(configOptions)
+            return services.AddHttpApi<TInterface>()
                     .ConfigurePrimaryHttpMessageHandler(provider =>
                     {
                         var svc = provider.GetRequiredService<INacosNamingService>();

@@ -1,4 +1,6 @@
 ﻿<Project>
+  <Import Project="build\dependencies.props" />
+
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <RepositoryType>git</RepositoryType>

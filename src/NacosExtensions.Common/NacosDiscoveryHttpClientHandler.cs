@@ -1,4 +1,4 @@
-﻿namespace WebApiClient.Extensions.Nacos
+﻿namespace NacosExtensions.Common
 {
     using System;
     using System.Collections.Generic;

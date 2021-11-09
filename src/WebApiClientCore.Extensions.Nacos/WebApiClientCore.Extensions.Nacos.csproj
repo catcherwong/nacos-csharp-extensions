@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<!--<Nullable>enable</Nullable>-->
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="nacos-sdk-csharp" Version="$(NacosSdkCsharpPackageVersion)" />
-		<PackageReference Include="WebApiClient.Extensions.HttpClientFactory" Version="$(WebApiClientExtensionsHttpClientFactoryPackageVersion)" />
-		<PackageReference Include="WebApiClient.JIT" Version="$(WebApiClientJITPackageVersion)" />
+		<PackageReference Include="WebApiClientCore" Version="$(WebApiClientCorePackageVersion)" />
 	</ItemGroup>
 
 	<ItemGroup>
