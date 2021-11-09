@@ -4,5 +4,13 @@
     <WebApiClientJITPackageVersion>1.1.4</WebApiClientJITPackageVersion>
     <WebApiClientExtensionsHttpClientFactoryPackageVersion>2.1.0</WebApiClientExtensionsHttpClientFactoryPackageVersion>
     <WebApiClientCorePackageVersion>2.0.2</WebApiClientCorePackageVersion>    
+    <RefitHttpClientFactoryPackageVersion>6.1.15</RefitHttpClientFactoryPackageVersion>    
+
+    <!-- FOR TEST PROJECTs -->
+    <MicrosoftNETTestSdkPackageVersion>17.0.0</MicrosoftNETTestSdkPackageVersion>
+    <MoqPackageVersion>4.16.1</MoqPackageVersion>
+    <XunitPackageVersion>2.4.1</XunitPackageVersion>
+    <XunitRunnerVSPackageVersion>2.4.3</XunitRunnerVSPackageVersion>
+    <CoverletCollectorPackageVersion>3.1.0</CoverletCollectorPackageVersion>
   </PropertyGroup>
 </Project>

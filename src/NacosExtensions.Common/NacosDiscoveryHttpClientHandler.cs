@@ -32,7 +32,8 @@
             try
             {
                 request.RequestUri = await LookupServiceAsync(current).ConfigureAwait(false);
-                return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+                var res = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+                return res;
             }
             catch (Exception e)
             {
@@ -41,18 +42,21 @@
             }
             finally
             {
-                request.RequestUri = current;
+                // Should we reset the request uri to current here?
+                // request.RequestUri = current;
             }
         }
 
         internal async Task<Uri> LookupServiceAsync(Uri request)
         {
-            var instance = await _namingService.SelectOneHealthyInstance(request.Host, _groupName, new List<string> { _cluster }, true).ConfigureAwait(false);
+            var instance = await _namingService
+                .SelectOneHealthyInstance(request.Host, _groupName, new List<string> { _cluster }, true).ConfigureAwait(false);
 
             if (instance != null)
             {
                 var host = $"{instance.Ip}:{instance.Port}";
 
+                // conventions for https, if the metadata contains secure.
                 var baseUrl = instance.Metadata.TryGetValue(Secure, out _)
                     ? $"{HTTPS}{host}"
                     : $"{HTTP}{host}";

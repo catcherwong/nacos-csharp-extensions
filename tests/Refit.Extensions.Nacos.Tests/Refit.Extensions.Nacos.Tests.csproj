@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\WebApiClientCore.Extensions.Nacos\WebApiClientCore.Extensions.Nacos.csproj" />
+    <ProjectReference Include="..\..\src\Refit.Extensions.Nacos\Refit.Extensions.Nacos.csproj" />
   </ItemGroup>
 
 </Project>
