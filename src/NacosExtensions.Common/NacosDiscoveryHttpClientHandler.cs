@@ -49,6 +49,8 @@
 
         internal async Task<Uri> LookupServiceAsync(Uri request)
         {
+            // Call SelectOneHealthyInstance with subscribe
+            // And the host of Uri will always be lowercase, it means that the services name must be lowercase!!!!
             var instance = await _namingService
                 .SelectOneHealthyInstance(request.Host, _groupName, new List<string> { _cluster }, true).ConfigureAwait(false);
 
@@ -56,7 +58,8 @@
             {
                 var host = $"{instance.Ip}:{instance.Port}";
 
-                // conventions for https, if the metadata contains secure.
+                // conventions here
+                // if the metadata contains the secure item, will use https!!!!
                 var baseUrl = instance.Metadata.TryGetValue(Secure, out _)
                     ? $"{HTTPS}{host}"
                     : $"{HTTP}{host}";

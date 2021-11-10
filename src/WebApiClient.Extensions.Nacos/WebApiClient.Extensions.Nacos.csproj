@@ -13,6 +13,7 @@
 	<ItemGroup>
 		<Compile Include="../NacosExtensions.Common/NacosDiscoveryHttpClientHandler.cs" />
 		<Compile Include="../NacosExtensions.Common/InternalsVisibleTo.cs" />
+		<Compile Include="../NacosExtensions.Common/Guard.cs" />
 	</ItemGroup>
 
 </Project>

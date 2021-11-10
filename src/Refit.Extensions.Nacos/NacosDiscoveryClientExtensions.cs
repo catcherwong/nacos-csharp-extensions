@@ -8,20 +8,67 @@
 
     public static class NacosDiscoveryClientExtensions
     {
-        public static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(this IServiceCollection services, string group = "DEFAULT_GROUP", string cluster = "DEFAULT")
-            where TInterface : class
-        {
-            return services.AddNacosDiscoveryTypedClient<TInterface>(p => null, group, cluster);
-        }
-
+        /// <summary>
+        /// Add refit with nacos discovery.
+        /// </summary>
+        /// <typeparam name="TInterface">API</typeparam>
+        /// <param name="services">services.</param>
+        /// <param name="group">The group name of nacos service.</param>
+        /// <param name="cluster">The cluster name of nacos service.</param>
+        /// <returns>IHttpClientBuilder</returns>
         public static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(
             this IServiceCollection services,
-            Func<IServiceProvider, RefitSettings> settingsAction,
-            string group = "DEFAULT_GROUP", string cluster = "DEFAULT")
+            string group = "DEFAULT_GROUP",
+            string cluster = "DEFAULT")
+            where TInterface : class
+        {
+            return services.AddNacosDiscoveryTypedClient<TInterface>(p => { }, group, cluster);
+        }
+
+        /// <summary>
+        /// Add refit with nacos discovery.
+        /// </summary>
+        /// <typeparam name="TInterface">API</typeparam>
+        /// <param name="services">services.</param>
+        /// <param name="configOptions">The refit config options.</param>
+        /// <param name="group">The group name of nacos service.</param>
+        /// <param name="cluster">The cluster name of nacos service.</param>
+        /// <returns>IHttpClientBuilder</returns>
+        public static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(
+            this IServiceCollection services,
+            Action<RefitSettings> configOptions,
+            string group = "DEFAULT_GROUP",
+            string cluster = "DEFAULT")
            where TInterface : class
         {
+            NacosExtensions.Common.Guard.NotNull(configOptions, nameof(configOptions));
+
+            var settings = new RefitSettings();
+            configOptions.Invoke(settings);
+
+            return services.AddNacosDiscoveryTypedClient<TInterface>(p => settings, group, cluster);
+        }
+
+        /// <summary>
+        /// Add refit with nacos discovery.
+        /// </summary>
+        /// <typeparam name="TInterface">API</typeparam>
+        /// <param name="services">services.</param>
+        /// <param name="configOptions">The refit config options.</param>
+        /// <param name="group">The group name of nacos service.</param>
+        /// <param name="cluster">The cluster name of nacos service.</param>
+        /// <returns>IHttpClientBuilder</returns>
+        public static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(
+            this IServiceCollection services,
+            Func<IServiceProvider, RefitSettings> configOptions,
+            string group = "DEFAULT_GROUP",
+            string cluster = "DEFAULT")
+           where TInterface : class
+        {
+            NacosExtensions.Common.Guard.NotNull(configOptions, nameof(configOptions));
+
             return services
-                    .AddRefitClient<TInterface>(settingsAction)
+                    .AddRefitClient<TInterface>(configOptions)
                     .ConfigurePrimaryHttpMessageHandler(provider =>
                     {
                         var svc = provider.GetRequiredService<INacosNamingService>();
@@ -40,15 +87,17 @@
         // fot test
         internal static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(
             this IServiceCollection services,
-            Func<IServiceProvider, RefitSettings> settingsAction,
+            Func<IServiceProvider, RefitSettings> configOptions,
             INacosNamingService svc,
             ILoggerFactory loggerFactory,
             string group = "DEFAULT_GROUP",
             string cluster = "DEFAULT")
             where TInterface : class
         {
+            NacosExtensions.Common.Guard.NotNull(configOptions, nameof(configOptions));
+
             return services
-                    .AddRefitClient<TInterface>(settingsAction)
+                    .AddRefitClient<TInterface>(configOptions)
                     .ConfigurePrimaryHttpMessageHandler(provider =>
                     {
                         return new NacosExtensions.Common.NacosDiscoveryHttpClientHandler(svc, group, cluster, loggerFactory);

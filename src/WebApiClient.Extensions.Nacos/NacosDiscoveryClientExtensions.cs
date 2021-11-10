@@ -8,31 +8,61 @@
 
     public static class NacosDiscoveryClientExtensions
     {
-        public static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(this IServiceCollection services, string group = "DEFAULT_GROUP", string cluster = "DEFAULT")
+        /// <summary>
+        /// Add webapiclient with nacos discovery.
+        /// </summary>
+        /// <typeparam name="TInterface">API</typeparam>
+        /// <param name="services">services.</param>
+        /// <param name="group">The group name of nacos service.</param>
+        /// <param name="cluster">The cluster name of nacos service.</param>
+        /// <returns>IHttpClientBuilder</returns>
+        public static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(
+            this IServiceCollection services,
+            string group = "DEFAULT_GROUP",
+            string cluster = "DEFAULT")
             where TInterface : class, IHttpApi
         {
             return services.AddNacosDiscoveryTypedClient<TInterface>(c => { }, group, cluster);
         }
 
-        public static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(this IServiceCollection services, Action<HttpApiConfig> configOptions, string group = "DEFAULT_GROUP", string cluster = "DEFAULT")
+        /// <summary>
+        /// Add webapiclient with nacos discovery.
+        /// </summary>
+        /// <typeparam name="TInterface">API</typeparam>
+        /// <param name="services">services.</param>
+        /// <param name="configOptions">The webapiclient config options.</param>
+        /// <param name="group">The group name of nacos service.</param>
+        /// <param name="cluster">The cluster name of nacos service.</param>
+        /// <returns>IHttpClientBuilder</returns>
+        public static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(
+            this IServiceCollection services,
+            Action<HttpApiConfig> configOptions,
+            string group = "DEFAULT_GROUP",
+            string cluster = "DEFAULT")
             where TInterface : class, IHttpApi
         {
-            if (configOptions == null)
-            {
-                throw new ArgumentNullException(nameof(configOptions));
-            }
+            NacosExtensions.Common.Guard.NotNull(configOptions, nameof(configOptions));
 
             return services.AddNacosDiscoveryTypedClient<TInterface>((c, p) => configOptions.Invoke(c), group, cluster);
         }
 
-
-        public static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(this IServiceCollection services, Action<HttpApiConfig, IServiceProvider> configOptions, string group = "DEFAULT_GROUP", string cluster = "DEFAULT")
+        /// <summary>
+        /// Add webapiclient with nacos discovery.
+        /// </summary>
+        /// <typeparam name="TInterface">API</typeparam>
+        /// <param name="services">services.</param>
+        /// <param name="configOptions">The webapiclient config options.</param>
+        /// <param name="group">The group name of nacos service.</param>
+        /// <param name="cluster">The cluster name of nacos service.</param>
+        /// <returns>IHttpClientBuilder</returns>
+        public static IHttpClientBuilder AddNacosDiscoveryTypedClient<TInterface>(
+            this IServiceCollection services,
+            Action<HttpApiConfig, IServiceProvider> configOptions,
+            string group = "DEFAULT_GROUP",
+            string cluster = "DEFAULT")
             where TInterface : class, IHttpApi
         {
-            if (configOptions == null)
-            {
-                throw new ArgumentNullException(nameof(configOptions));
-            }
+            NacosExtensions.Common.Guard.NotNull(configOptions, nameof(configOptions));
 
             return services
                     .AddHttpApiTypedClient<TInterface>(configOptions)
@@ -61,10 +91,7 @@
             string cluster = "DEFAULT")
             where TInterface : class, IHttpApi
         {
-            if (configOptions == null)
-            {
-                throw new ArgumentNullException(nameof(configOptions));
-            }
+            NacosExtensions.Common.Guard.NotNull(configOptions, nameof(configOptions));
 
             return services
                     .AddHttpApiTypedClient<TInterface>(configOptions)

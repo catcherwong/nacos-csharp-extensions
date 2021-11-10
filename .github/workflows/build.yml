@@ -1,0 +1,37 @@
+name: Build
+
+on:
+  push:
+    branches: [ dev, main ]
+  pull_request:
+    branches: [ dev, main ]
+
+jobs:
+
+  linux:    
+    name: build on linux
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Show dotnet Version
+      run: dotnet --version
+    - name: Build with dotnet
+      run: |
+        dotnet build --configuration Release --source https://api.nuget.org/v3/index.json src/Refit.Extensions.Nacos/Refit.Extensions.Nacos.csproj
+        dotnet build --configuration Release --source https://api.nuget.org/v3/index.json src/WebApiClient.Extensions.Nacos/WebApiClient.Extensions.Nacos.csproj
+        dotnet build --configuration Release --source https://api.nuget.org/v3/index.json src/WebApiClientCore.Extensions.Nacos/WebApiClientCore.Extensions.Nacos.csproj
+        dotnet build --configuration Release --source https://api.nuget.org/v3/index.json tests/NacosExtensions.Common.Tests/NacosExtensions.Common.Tests.csproj
+        dotnet build --configuration Release --source https://api.nuget.org/v3/index.json tests/Refit.Extensions.Nacos.Tests/Refit.Extensions.Nacos.Tests.csproj
+        dotnet build --configuration Release --source https://api.nuget.org/v3/index.json tests/WebApiClient.Extensions.Nacos.Tests/WebApiClient.Extensions.Nacos.Tests.csproj
+        dotnet build --configuration Release --source https://api.nuget.org/v3/index.json tests/WebApiClientCore.Extensions.Nacos.Tests/WebApiClientCore.Extensions.Nacos.Tests.csproj
+    - name: Test with dotnet
+      run: |
+        dotnet test tests/NacosExtensions.Common.Tests/NacosExtensions.Common.Tests.csproj --no-restore
+        dotnet test tests/Refit.Extensions.Nacos.Tests/Refit.Extensions.Nacos.Tests.csproj --no-restore
+        dotnet test tests/WebApiClient.Extensions.Nacos.Tests/WebApiClient.Extensions.Nacos.Tests.csproj --no-restore
+        dotnet test tests/WebApiClientCore.Extensions.Nacos.Tests/WebApiClientCore.Extensions.Nacos.Tests.csproj --no-restore

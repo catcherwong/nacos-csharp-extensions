@@ -1,19 +1,19 @@
-# nacos-csharp-extensions                   [中文](./README.zh-cn.md)
+# nacos-csharp-extensions                   [English](./README.md)
 
-Some extensions for `nacos-sdk-csharp`.
+一些基于 `nacos-sdk-csharp` 的扩展.
 
-## Features
+## 功能特性
 
-- Declarative REST Client Integration
-    1. WebApiClient Integration
-    2. WebApiClientCore Integration
-    3. Refit Integration
-- Others..
+- 声明式服务调用工具集成
+    1. WebApiClient
+    2. WebApiClientCore
+    3. Refit
+- 其他..
 
 
-## Basic Usage
+## 基本用法
 
-### API Definition
+### API 定义
 
 ```cs
 // for webapiclient/core
@@ -33,9 +33,9 @@ public interface IGitHubAPI
 }
 ```
 
-> NOTE: The service name must be lowercase!
+> 注意: 注册上 nacos 的服务名要是小写的！
 
-### Config
+### 配置
 
 ```cs
 // nacos dependency
@@ -56,7 +56,7 @@ services.AddNacosDiscoveryTypedClient<IGitHubAPI>("DEFAULT_GROUP", "DEFAULT")
         });
 ```
 
-### Call
+### 调用
 
 ```cs
 [ApiController]
