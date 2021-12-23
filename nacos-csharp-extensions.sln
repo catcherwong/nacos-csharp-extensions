@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{627AE167-3146-4119-8E23-CED0D8AA057D}"
 EndProject
@@ -23,11 +23,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NacosExtensions.Common.Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiClientCore.Extensions.Nacos", "src\WebApiClientCore.Extensions.Nacos\WebApiClientCore.Extensions.Nacos.csproj", "{9CBC2CDF-E96E-48B9-80B1-09AA165039D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiClientCore.Extensions.Nacos.Tests", "tests\WebApiClientCore.Extensions.Nacos.Tests\WebApiClientCore.Extensions.Nacos.Tests.csproj", "{6E47B9A7-235F-4EF6-86C3-FABA6007E3BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiClientCore.Extensions.Nacos.Tests", "tests\WebApiClientCore.Extensions.Nacos.Tests\WebApiClientCore.Extensions.Nacos.Tests.csproj", "{6E47B9A7-235F-4EF6-86C3-FABA6007E3BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refit.Extensions.Nacos", "src\Refit.Extensions.Nacos\Refit.Extensions.Nacos.csproj", "{5BC8A3C6-F492-4F88-8EE3-1258E4CF7F45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Refit.Extensions.Nacos", "src\Refit.Extensions.Nacos\Refit.Extensions.Nacos.csproj", "{5BC8A3C6-F492-4F88-8EE3-1258E4CF7F45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refit.Extensions.Nacos.Tests", "tests\Refit.Extensions.Nacos.Tests\Refit.Extensions.Nacos.Tests.csproj", "{7745A621-27A1-4618-BC90-D5F8D46E47E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Refit.Extensions.Nacos.Tests", "tests\Refit.Extensions.Nacos.Tests\Refit.Extensions.Nacos.Tests.csproj", "{7745A621-27A1-4618-BC90-D5F8D46E47E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yarp.Extensions.Nacos", "src\Yarp.Extensions.Nacos\Yarp.Extensions.Nacos.csproj", "{8E4C05BC-9F6F-4A1D-A17F-B7E92C3BB458}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YarpSample", "samples\YarpSample\YarpSample.csproj", "{1B5426D4-78B4-479B-917F-F3B6353D3D44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +79,14 @@ Global
 		{7745A621-27A1-4618-BC90-D5F8D46E47E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7745A621-27A1-4618-BC90-D5F8D46E47E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7745A621-27A1-4618-BC90-D5F8D46E47E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E4C05BC-9F6F-4A1D-A17F-B7E92C3BB458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E4C05BC-9F6F-4A1D-A17F-B7E92C3BB458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E4C05BC-9F6F-4A1D-A17F-B7E92C3BB458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E4C05BC-9F6F-4A1D-A17F-B7E92C3BB458}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B5426D4-78B4-479B-917F-F3B6353D3D44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B5426D4-78B4-479B-917F-F3B6353D3D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B5426D4-78B4-479B-917F-F3B6353D3D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B5426D4-78B4-479B-917F-F3B6353D3D44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +102,8 @@ Global
 		{6E47B9A7-235F-4EF6-86C3-FABA6007E3BE} = {D95D5845-1836-47C6-A5D9-1AF77C420100}
 		{5BC8A3C6-F492-4F88-8EE3-1258E4CF7F45} = {627AE167-3146-4119-8E23-CED0D8AA057D}
 		{7745A621-27A1-4618-BC90-D5F8D46E47E7} = {D95D5845-1836-47C6-A5D9-1AF77C420100}
+		{8E4C05BC-9F6F-4A1D-A17F-B7E92C3BB458} = {627AE167-3146-4119-8E23-CED0D8AA057D}
+		{1B5426D4-78B4-479B-917F-F3B6353D3D44} = {9202CBE2-FC05-4925-9A6F-5ACF887317D6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9778CC80-FEEB-416E-854F-E0D2A30E57AD}
