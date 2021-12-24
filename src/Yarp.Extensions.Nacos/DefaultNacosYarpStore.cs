@@ -1,19 +1,16 @@
 ﻿namespace Yarp.Extensions.Nacos
 {
-    using Yarp.ReverseProxy.Configuration;
+    using global::Nacos.V2;
+    using Microsoft.Extensions.Logging;
+    using Microsoft.Extensions.Options;
     using Microsoft.Extensions.Primitives;
     using System;
-    using System.Threading;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using global::Nacos.V2.Naming.Dtos;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using Microsoft.Extensions.Options;
-    using Microsoft.Extensions.Logging;
     using System.Collections.Concurrent;
-    using Microsoft.Extensions.DependencyInjection;
-    using global::Nacos.V2;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Yarp.ReverseProxy.Configuration;
 
     public class DefaultNacosYarpStore : INacosYarpStore
     {
@@ -48,8 +45,21 @@
             if (_cachedClusters.Any() && _cachedRoutes.Any())
             {
                 snapshot = new NacosProxyConfig(_cachedRoutes.Values.ToList(), _cachedClusters.Values.ToList());
-                return snapshot;
             }
+            else
+            {
+                snapshot = await GetRealTimeConfigAsync().ConfigureAwait(false) as NacosProxyConfig;
+            }
+
+            if (snapshot == null) throw new NacosYarpException("Can not get the config!!");
+
+            return snapshot;
+        }
+
+
+        public async Task<IProxyConfig> GetRealTimeConfigAsync()
+        {
+            NacosProxyConfig snapshot = null;
 
             try
             {
@@ -86,10 +96,12 @@
                             // ClusterConfig
                             var cluster = NacosYarpConfigMapper.BuildClusterConfig(clusterId, NacosYarpConfigMapper.BuildDestinationConfig(instances));
                             clusters[clusterId] = cluster;
+                            _cachedClusters.TryAdd(clusterId, cluster);
 
                             // RouteConfig
                             var route = NacosYarpConfigMapper.BuildRouteConfig(clusterId, serviceName);
                             routes[clusterId] = route;
+                            _cachedRoutes.TryAdd(clusterId, route);
                         }
 
                         snapshot = new NacosProxyConfig(routes.Values.ToList(), clusters.Values.ToList());
@@ -129,8 +141,6 @@
 
                         _store._cachedClusters[clusterId] = newCluster;
 
-                        // var config = new NacosProxyConfig(_store._cachedRoutes.Values.ToList(), _store._cachedClusters.Values.ToList());
-                        Console.WriteLine("IEventListener-----update");
                         _store.Reload();
                     }
                 }

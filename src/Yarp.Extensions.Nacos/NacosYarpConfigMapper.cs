@@ -31,6 +31,7 @@
             return new ClusterConfig()
             {
                 ClusterId = clusterId,
+                LoadBalancingPolicy = ReverseProxy.LoadBalancing.LoadBalancingPolicies.RoundRobin,
                 Destinations = destinations,
             };
         }
@@ -55,7 +56,7 @@
                     Metadata = metadata,
                 };
 
-                destinations.Add(instance.ServiceName, destination);
+                destinations.Add(Guid.NewGuid().ToString("N"), destination);
             }
 
             return destinations;

@@ -54,10 +54,11 @@
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                NacosProxyConfig newSnapshot = await _store.GetConfigAsync().ConfigureAwait(false) as NacosProxyConfig;
+                NacosProxyConfig newSnapshot = await _store.GetRealTimeConfigAsync().ConfigureAwait(false) as NacosProxyConfig;
 
                 if (newSnapshot != null)
                 {
+                    // TODO: maybe we should not reload when the services not changed!!
                     _store.Reload();
                 }
 
@@ -77,12 +78,9 @@
                 }
                 catch (Exception ex)
                 {
-                    _logger?.LogError(ex, "UpdateConfig");
+                    _logger?.LogError(ex, "Can not update yarp configuration.");
 
-                    if (_config == null)
-                    {
-                        throw;
-                    }
+                    if (_config == null) throw;
 
                     return;
                 }
@@ -98,7 +96,7 @@
                 }
                 catch (Exception ex)
                 {
-                    _logger?.LogError(ex, "");
+                    _logger?.LogError(ex, "Cancel old token error");
                 }
             }
         }
