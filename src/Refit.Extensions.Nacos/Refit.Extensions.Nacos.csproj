@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+
+    <Authors>Catcher Wong</Authors>
+		<Description>Integrate Refit with Nacos to make service discovery more easier.</Description>
+		<PackageTags>nacos,csharp,Refit</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

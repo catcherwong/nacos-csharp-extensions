@@ -5,6 +5,7 @@
     <WebApiClientExtensionsHttpClientFactoryPackageVersion>2.1.0</WebApiClientExtensionsHttpClientFactoryPackageVersion>
     <WebApiClientCorePackageVersion>2.0.2</WebApiClientCorePackageVersion>    
     <RefitHttpClientFactoryPackageVersion>6.1.15</RefitHttpClientFactoryPackageVersion>    
+    <YarpReverseProxyPackageVersion>1.0.0</YarpReverseProxyPackageVersion>
 
     <!-- FOR TEST PROJECTs -->
     <MicrosoftNETTestSdkPackageVersion>17.0.0</MicrosoftNETTestSdkPackageVersion>
