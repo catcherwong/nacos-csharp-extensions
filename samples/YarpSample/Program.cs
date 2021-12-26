@@ -13,7 +13,7 @@ builder.Services.AddNacosV2Naming(x =>
 });
 
 builder.Services.AddReverseProxy()
-    .AddNacosServiceDiscovery();
+    .AddNacosServiceDiscovery(percount: 100, autoRefreshPeriod: 30);
 
 var app = builder.Build();
 

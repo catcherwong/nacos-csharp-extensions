@@ -7,16 +7,18 @@
     using System.Linq;
     using Yarp.ReverseProxy.Configuration;
 
-    internal static class NacosYarpConfigMapper
+    public class DefaultNacosYarpConfigMapper : INacosYarpConfigMapper
     {
         private static readonly string HTTP = "http://";
         private static readonly string HTTPS = "https://";
         private static readonly string Secure = "secure";
+        private static readonly string MetadataPrefix = "yarp";
 
-        internal static RouteConfig BuildRouteConfig(string clusterId, string serviceName)
+        public RouteConfig CreateRouteConfig(string clusterId, string serviceName)
         {
-            // TODO: how do define the path
-            // 【/servicename/{**catch-all}】 at first or read from instance metadata?
+            // TODO: how to define the path
+            // 【/servicename/{**catch-all}】 at first or read from instance metadata ?
+            // what about different group with same service name or ban this one
             return new RouteConfig
             {
                 RouteId = $"{clusterId}-route",
@@ -26,7 +28,7 @@
             };
         }
 
-        internal static ClusterConfig BuildClusterConfig(string clusterId, IReadOnlyDictionary<string, DestinationConfig> destinations)
+        public ClusterConfig CreateClusterConfig(string clusterId, IReadOnlyDictionary<string, DestinationConfig> destinations)
         {
             return new ClusterConfig()
             {
@@ -36,7 +38,7 @@
             };
         }
 
-        internal static Dictionary<string, DestinationConfig> BuildDestinationConfig(List<Instance> instances)
+        public Dictionary<string, DestinationConfig> CreateDestinationConfig(List<Instance> instances)
         {
             var destinations = new Dictionary<string, DestinationConfig>(StringComparer.OrdinalIgnoreCase);
 
@@ -46,8 +48,9 @@
                      ? $"{HTTPS}{instance.Ip}:{instance.Port}"
                      : $"{HTTP}{instance.Ip}:{instance.Port}";
 
+                // filter the metadata from instance
                 var metadata = new ReadOnlyDictionary<string, string>(instance.Metadata
-                    .Where(x => x.Key.StartsWith("yarp", StringComparison.OrdinalIgnoreCase))
+                    .Where(x => x.Key.StartsWith(MetadataPrefix, StringComparison.OrdinalIgnoreCase))
                     .ToDictionary(s => s.Key, s => s.Value, StringComparer.OrdinalIgnoreCase));
 
                 var destination = new DestinationConfig
@@ -56,7 +59,8 @@
                     Metadata = metadata,
                 };
 
-                destinations.Add(Guid.NewGuid().ToString("N"), destination);
+                // TODO: how to define the destination's key, the key should not be changed.
+                destinations.Add(address, destination);
             }
 
             return destinations;

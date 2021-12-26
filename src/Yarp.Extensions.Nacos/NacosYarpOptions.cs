@@ -4,8 +4,14 @@
 
     public class NacosYarpOptions
     {
-        public List<string> GroupList { get; set; } = new List<string>();
+        /// <summary>
+        /// Specify group name list that need to linsten
+        /// </summary>
+        public List<string> GroupNameList { get; set; } = new List<string>();
 
+        /// <summary>
+        /// Specify the count that query the service from nacos server
+        /// </summary>
         public int PreCount { get; set; } = 50;
 
         /// <summary>
