@@ -21,11 +21,13 @@ jobs:
         dotnet build --configuration Release --source https://api.nuget.org/v3/index.json src/Refit.Extensions.Nacos/Refit.Extensions.Nacos.csproj
         dotnet build --configuration Release --source https://api.nuget.org/v3/index.json src/WebApiClient.Extensions.Nacos/WebApiClient.Extensions.Nacos.csproj
         dotnet build --configuration Release --source https://api.nuget.org/v3/index.json src/WebApiClientCore.Extensions.Nacos/WebApiClientCore.Extensions.Nacos.csproj
+        dotnet build --configuration Release --source https://api.nuget.org/v3/index.json src/Yarp.Extensions.Nacos/Yarp.Extensions.Nacos.csproj
     - name: Pack with dotnet
       run: |
         dotnet pack src/Refit.Extensions.Nacos/Refit.Extensions.Nacos.csproj -o /home/runner/work/nugetpkgs -c Release --no-build
         dotnet pack src/WebApiClient.Extensions.Nacos/WebApiClient.Extensions.Nacos.csproj -o /home/runner/work/nugetpkgs -c Release --no-build
         dotnet pack src/WebApiClientCore.Extensions.Nacos/WebApiClientCore.Extensions.Nacos.csproj -o /home/runner/work/nugetpkgs -c Release --no-build
+        dotnet pack src/Yarp.Extensions.Nacos/Yarp.Extensions.Nacos.csproj -o /home/runner/work/nugetpkgs -c Release --no-build
     - name: Upload artifact
       uses: actions/upload-artifact@v1
       with:

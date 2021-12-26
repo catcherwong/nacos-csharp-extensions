@@ -29,9 +29,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Refit.Extensions.Nacos", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Refit.Extensions.Nacos.Tests", "tests\Refit.Extensions.Nacos.Tests\Refit.Extensions.Nacos.Tests.csproj", "{7745A621-27A1-4618-BC90-D5F8D46E47E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yarp.Extensions.Nacos", "src\Yarp.Extensions.Nacos\Yarp.Extensions.Nacos.csproj", "{8E4C05BC-9F6F-4A1D-A17F-B7E92C3BB458}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yarp.Extensions.Nacos", "src\Yarp.Extensions.Nacos\Yarp.Extensions.Nacos.csproj", "{8E4C05BC-9F6F-4A1D-A17F-B7E92C3BB458}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YarpSample", "samples\YarpSample\YarpSample.csproj", "{1B5426D4-78B4-479B-917F-F3B6353D3D44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YarpSample", "samples\YarpSample\YarpSample.csproj", "{1B5426D4-78B4-479B-917F-F3B6353D3D44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yarp.Extensions.Nacos.Tests", "tests\Yarp.Extensions.Nacos.Tests\Yarp.Extensions.Nacos.Tests.csproj", "{393F2D07-3E8E-4632-8F46-688464F5AC1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{1B5426D4-78B4-479B-917F-F3B6353D3D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B5426D4-78B4-479B-917F-F3B6353D3D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B5426D4-78B4-479B-917F-F3B6353D3D44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{393F2D07-3E8E-4632-8F46-688464F5AC1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{393F2D07-3E8E-4632-8F46-688464F5AC1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{393F2D07-3E8E-4632-8F46-688464F5AC1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{393F2D07-3E8E-4632-8F46-688464F5AC1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,6 +110,7 @@ Global
 		{7745A621-27A1-4618-BC90-D5F8D46E47E7} = {D95D5845-1836-47C6-A5D9-1AF77C420100}
 		{8E4C05BC-9F6F-4A1D-A17F-B7E92C3BB458} = {627AE167-3146-4119-8E23-CED0D8AA057D}
 		{1B5426D4-78B4-479B-917F-F3B6353D3D44} = {9202CBE2-FC05-4925-9A6F-5ACF887317D6}
+		{393F2D07-3E8E-4632-8F46-688464F5AC1A} = {D95D5845-1836-47C6-A5D9-1AF77C420100}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9778CC80-FEEB-416E-854F-E0D2A30E57AD}
