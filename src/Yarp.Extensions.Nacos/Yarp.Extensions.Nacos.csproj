@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<PackageId>Yarp.ReverseProxy.Extensions.Nacos</PackageId>
+		<PackageId>ReverseProxy.Extensions.Nacos</PackageId>
 		
 		<Authors>Catcher Wong</Authors>
 		<Description>Integrate yarp with nacos to make service discovery more easier.</Description>
