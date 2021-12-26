@@ -8,6 +8,7 @@
     1. WebApiClient
     2. WebApiClientCore
     3. Refit
+- 反向代理 [YARP](https://github.com/microsoft/reverse-proxy) 集成
 - 其他..
 
 
