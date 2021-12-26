@@ -2,6 +2,10 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>		
+
+		<Authors>Catcher Wong</Authors>
+		<Description>Integrate WebApiClientCore with Nacos to make service discovery more easier.</Description>
+		<PackageTags>nacos,csharp,WebApiClientCore</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>

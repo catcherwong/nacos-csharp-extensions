@@ -6,6 +6,8 @@
     <Authors>Catcher Wong</Authors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/catcherwong/nacos-csharp-extensions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/catcherwong/nacos-csharp-extensions</RepositoryUrl>
+		<ProjectUrl>https://github.com/catcherwong/nacos-csharp-extensions</ProjectUrl>
     <Deterministic>false</Deterministic>
 
     <VersionPrefix>$(NugetVersion)</VersionPrefix>

@@ -8,6 +8,7 @@ Some extensions for `nacos-sdk-csharp`.
     1. WebApiClient Integration
     2. WebApiClientCore Integration
     3. Refit Integration
+- Reverse proxy [YARP](https://github.com/microsoft/reverse-proxy) Integration
 - Others..
 
 
