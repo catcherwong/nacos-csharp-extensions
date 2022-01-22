@@ -10,7 +10,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="nacos-sdk-csharp" Version="1.3.1-alpha20211222140843" />
+		<PackageReference Include="nacos-sdk-csharp" Version="$(NacosSdkCsharpPackageVersion)" />
 		<PackageReference Include="Yarp.ReverseProxy" Version="$(YarpReverseProxyPackageVersion)" />
 	</ItemGroup>
 
